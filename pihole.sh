@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEFAULT_PIHOLE_PATH="./volumes/pihole"
+DEFAULT_PIHOLE_PATH="$PWD/volumes/pihole"
 PIHOLE_PATH=${PIHOLE_PATH:-$DEFAULT_PIHOLE_PATH}
 
 case $1 in
@@ -25,11 +25,10 @@ case $1 in
       -p 5555:80 \
       --restart unless-stopped \
       diginc/pi-hole
-    docker-compose up -d pihole
     ;;
   stop)
-    docker-compose stop pihole
-    docker-compose rm pihole
+    docker stop pihole
+    docker rm pihole
     ;;
   *)
     echo "Invalid subcommand. Use 'start' or 'stop'"
