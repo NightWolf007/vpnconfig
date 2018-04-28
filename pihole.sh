@@ -1,7 +1,8 @@
 #!/bin/bash
 
-DEFAULT_PIHOLE_PATH="$PWD/volumes/pihole"
-PIHOLE_PATH=${PIHOLE_PATH:-$DEFAULT_PIHOLE_PATH}
+PIHOLE_PATH=${PIHOLE_PATH:-"$PWD/volumes/pihole"}
+PIHOLE_PORT=${PIHOLE_PORT:-5555}
+NETWORK="${NETWORK:-"vpn-net"}"
 
 case $1 in
   start)
@@ -19,10 +20,10 @@ case $1 in
       -e WEBPASSWORD="${PASSWD}" \
       -v $PIHOLE_PATH/pihole:/etc/pihole \
       -v $PIHOLE_PATH/dnsmasq.d:/etc/dnsmasq.d \
-      --network="vpn-net" \
+      --network=$NETWORK \
       -p 53:53/tcp \
       -p 53:53/udp \
-      -p 5555:80 \
+      -p $PIHOLE_PORT:80 \
       --restart unless-stopped \
       diginc/pi-hole
     ;;

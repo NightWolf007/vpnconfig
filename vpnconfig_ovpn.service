@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenVPN Service
+After=docker.service pihole.service
+Requires=docker.service pihole.service
+
+[Service]
+ExecStart=/usr/local/bin/ovpn start
+ExecStop=/usr/local/bin/ovpn stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Pi-Hole Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/local/bin/pihole start
+ExecStop=/usr/local/bin/pihole stop
+
+[Install]
+WantedBy=multi-user.target

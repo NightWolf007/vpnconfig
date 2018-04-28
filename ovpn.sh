@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DEFAULT_OVPN_PATH="$PWD/volumes/ovpn"
-OVPN_PATH="${OVPN_PATH:-$DEFAULT_OVPN_PATH}"
+OVPN_PATH="${OVPN_PATH:-"$PWD/volumes/ovpn"}"
+NETWORK="${NETWORK:-"vpn-net"}"
 
 ovpn_cmd () {
   docker run --rm -it \
@@ -24,7 +24,7 @@ case $1 in
     docker run -d \
       --name ovpn \
       -v $OVPN_PATH/openvpn:/etc/openvpn \
-      --network="vpn-net" \
+      --network=$NETWORK \
       -p 1194:1194/udp \
       --cap-add=NET_ADMIN \
       --restart always \
