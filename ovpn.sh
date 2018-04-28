@@ -1,6 +1,7 @@
 #!/bin/bash
 
 OVPN_PATH="${OVPN_PATH:-"$PWD/volumes/ovpn"}"
+PIHOLE_IP="${PIHOLE_IP:-"172.19.0.2"}"
 NETWORK="${NETWORK:-"vpn-net"}"
 
 ovpn_cmd () {
@@ -41,7 +42,7 @@ case $1 in
     ovpn_cmd ovpn_revokeclient $2 remove
     ;;
   cert-get)
-    ovpn_cmd ovpn_getclient $2 > "$2.ovpn"
+    ovpn_cmd ovpn_getclient $2
     ;;
   *)
     echo "Invalid subcommand. Use 'init', 'start', 'stop', 'cert-create', 'cert-revoke' or 'cert-get'"

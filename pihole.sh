@@ -2,6 +2,7 @@
 
 PIHOLE_PATH=${PIHOLE_PATH:-"$PWD/volumes/pihole"}
 PIHOLE_PORT=${PIHOLE_PORT:-5555}
+PIHOLE_IP=${PIHOLE_IP:-"172.19.0.2"}
 NETWORK="${NETWORK:-"vpn-net"}"
 
 case $1 in
@@ -20,7 +21,8 @@ case $1 in
       -e WEBPASSWORD="${PASSWD}" \
       -v $PIHOLE_PATH/pihole:/etc/pihole \
       -v $PIHOLE_PATH/dnsmasq.d:/etc/dnsmasq.d \
-      --network=$NETWORK \
+      --net $NETWORK \
+      --ip $PIHOLE_IP \
       -p 53:53/tcp \
       -p 53:53/udp \
       -p $PIHOLE_PORT:80 \

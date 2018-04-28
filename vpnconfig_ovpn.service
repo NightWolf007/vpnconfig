@@ -1,7 +1,7 @@
 [Unit]
 Description=OpenVPN Service
-After=docker.service pihole.service
-Requires=docker.service pihole.service
+After=docker.service vpnconfig_pihole.service
+Requires=docker.service vpnconfig_pihole.service
 
 [Service]
 ExecStart=/usr/local/bin/ovpn start
