@@ -19,6 +19,7 @@ sed -i "s|NETWORK=.*|NETWORK=\"$NETWORK\"|g" /usr/local/bin/ovpn
 
 cp ./vpnconfig_pihole.service /etc/systemd/system/
 cp ./vpnconfig_ovpn.service /etc/systemd/system/
+systemctl daemon-reload
 
 mkdir -p $VOLUMES_PATH/pihole
 mkdir -p $VOLUMES_PATH/ovpn
@@ -26,4 +27,3 @@ mkdir -p $VOLUMES_PATH/ovpn
 docker network create --subnet=172.19.0.0/16 $NETWORK
 
 /usr/local/bin/ovpn init
-systemctl daemon-reload

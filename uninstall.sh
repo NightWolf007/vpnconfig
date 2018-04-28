@@ -11,6 +11,8 @@ systemctl stop vpnconfig_pihole
 
 rm /etc/systemd/system/vpnconfig_ovpn.service
 rm /etc/systemd/system/vpnconfig_pihole.service
+systemctl daemon-reload
+
 
 docker network rm $NETWORK
 
