@@ -18,7 +18,7 @@ case $1 in
     ovpn_cmd ovpn_initpki
     ovpn_cmd bash -c "
       sed -i '/dhcp-option/s/^/# /g' /etc/openvpn/openvpn.conf &&
-      echo 'push \"dhcp-option DNS pihole\"' >> /etc/openvpn/openvpn.conf
+      echo 'push \"dhcp-option DNS $PIHOLE_IP\"' >> /etc/openvpn/openvpn.conf
     "
     ;;
   start)
