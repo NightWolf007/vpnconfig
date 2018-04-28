@@ -11,7 +11,7 @@ case $1 in
     IPV6="$(ip -6 route get 2001:4860:4860::8888 | awk '{for(i=1;i<=NF;i++) if ($i=="src") print $(i+1)}')"
     PASSWD="$2"
 
-    docker run -d \
+    docker run \
       --name pihole \
       -e ServerIP="${IP}" \
       -e ServerIPv6="${IPV6}" \

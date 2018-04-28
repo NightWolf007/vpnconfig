@@ -22,7 +22,7 @@ case $1 in
     "
     ;;
   start)
-    docker run -d \
+    docker run \
       --name ovpn \
       -v $OVPN_PATH/openvpn:/etc/openvpn \
       --network=$NETWORK \

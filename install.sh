@@ -26,3 +26,4 @@ mkdir -p $VOLUMES_PATH/ovpn
 docker network create --subnet=172.19.0.0/16 $NETWORK
 
 /usr/local/bin/ovpn init
+systemctl daemon-reload
