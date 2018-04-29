@@ -28,4 +28,6 @@ mkdir -p $VOLUMES_PATH/ovpn
 
 docker network create --subnet=172.19.0.0/16 $NETWORK
 
-/usr/local/bin/ovpn init
+if [ "$1" = "--with-init" ]; then
+  /usr/local/bin/ovpn init
+fi
