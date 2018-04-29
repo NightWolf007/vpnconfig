@@ -3,7 +3,8 @@
 PIHOLE_PATH=${PIHOLE_PATH:-"$PWD/volumes/pihole"}
 PIHOLE_PORT=${PIHOLE_PORT:-5555}
 PIHOLE_IP=${PIHOLE_IP:-"172.19.0.2"}
-NETWORK="${NETWORK:-"vpn-net"}"
+NETWORK=${NETWORK:-"vpn-net"}
+PIHOLE_PASSWD=${PIHOLE_PASSWD:-"admin"}
 
 case $1 in
   start)
@@ -23,8 +24,6 @@ case $1 in
       -v $PIHOLE_PATH/dnsmasq.d:/etc/dnsmasq.d \
       --net $NETWORK \
       --ip $PIHOLE_IP \
-      -p 53:53/tcp \
-      -p 53:53/udp \
       -p $PIHOLE_PORT:80 \
       --restart unless-stopped \
       diginc/pi-hole

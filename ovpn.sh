@@ -1,8 +1,8 @@
 #!/bin/bash
 
-OVPN_PATH="${OVPN_PATH:-"$PWD/volumes/ovpn"}"
-PIHOLE_IP="${PIHOLE_IP:-"172.19.0.2"}"
-NETWORK="${NETWORK:-"vpn-net"}"
+OVPN_PATH=${OVPN_PATH:-"$PWD/volumes/ovpn"}
+PIHOLE_IP=${PIHOLE_IP:-"172.19.0.2"}
+NETWORK=${NETWORK:-"vpn-net"}
 
 ovpn_cmd () {
   docker run --rm -it \
