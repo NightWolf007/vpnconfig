@@ -19,13 +19,11 @@ case $1 in
       -e TZ="UTC" \
       -e DNS1="8.8.8.8" \
       -e DNS2="8.8.4.4" \
-      -e WEBPASSWORD="${PASSWD}" \
+      -e WEBPASSWORD="${PIHOLE_PASSWD}" \
       -v $PIHOLE_PATH/pihole:/etc/pihole \
       -v $PIHOLE_PATH/dnsmasq.d:/etc/dnsmasq.d \
       --net $NETWORK \
       --ip $PIHOLE_IP \
-      # -p 53:53/tcp \
-      # -p 53:53/udp \
       -p $PIHOLE_PORT:80 \
       --restart unless-stopped \
       diginc/pi-hole
