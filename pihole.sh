@@ -24,6 +24,8 @@ case $1 in
       -v $PIHOLE_PATH/dnsmasq.d:/etc/dnsmasq.d \
       --net $NETWORK \
       --ip $PIHOLE_IP \
+      # -p 53:53/tcp \
+      # -p 53:53/udp \
       -p $PIHOLE_PORT:80 \
       --restart unless-stopped \
       diginc/pi-hole
